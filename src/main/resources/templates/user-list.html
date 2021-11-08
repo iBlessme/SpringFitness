@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <style>
+a{
+    padding: 1em;
+text-decoration: none;
+    color: #E6DDC4;
+}
+.super{
+    color: #2b41a5;
+}
+        body{
+            background-color: #678983;
+        }
+        .main{
+            width: 60%;
+            margin: auto;
+            padding: 50px;
+            background-color: #E6DDC4;
+        }
+        table {
+            margin: auto;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td:first-child {
+            background: #AFCDE7;
+            color: white;
+            padding: 10px 20px;
+        }
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+        td {
+            background: #D8E6F3;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="navbar :: navbar"></div>
+<div class="main">
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Активность</th>
+            <th scope="col">Логин</th>
+            <th scope="col">Роль</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="a: ${users}">
+            <th scope="row" th:text="${a.id}"></th>
+            <td th:text="${a.active}"></td>
+            <td th:text="${a.username}"></td>
+            <td th:text="${a.roles}"></td>
+            <td>
+                <a class="super" th:href="'/admin/user-edit/' + ${a.id}">Изменить</a>
+            </td>
+            <td>
+                <a class="super" th:href="'/admin/user-list/' + ${a.id} + '/delete'">Удалить</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div style="padding: 10px">
+        <a  class="super" href="/admin/user-add">Добавить</a>
+    </div>
+</div>
+</body>
+</html>

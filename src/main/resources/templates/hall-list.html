@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Залы</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: #181D31;
+            display: block;
+            margin: 20px;
+
+        }
+        body{
+            background-color: #678983;
+        }
+        .main{
+            width: 60%;
+            margin: auto;
+            padding: 50px;
+            background-color: #E6DDC4;
+        }
+        table {
+            margin: auto;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td:first-child {
+            background: #AFCDE7;
+            color: white;
+            padding: 10px 20px;
+        }
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+        td {
+            background: #D8E6F3;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class="main">
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Наименование</th>
+            <th scope="col">Ограничение</th>
+<!--            <th scope="col">Город</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="a : ${halls}">
+            <th scope="row" th:text="${a.id}"></th>
+            <td  th:text="${a.name}"></td>
+            <td  th:text="${a.countPeople}"></td>
+<!--            <td th:text="${a.sity}"></td>-->
+        </tr>
+        </tbody>
+    </table>
+    <a href="/logout">Выйти</a>
+</div>
+</body>
+</html>

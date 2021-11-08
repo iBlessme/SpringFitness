@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление</title>
+    <style>
+        a{
+            padding: 1em;
+            text-decoration: none;
+            color: #E6DDC4;
+        }
+        .super{
+            color: #2b41a5;
+        }
+        body{
+            background-color: #678983;
+        }
+        .main{
+            width: 60%;
+            margin: auto;
+            padding: 50px;
+            background-color: #E6DDC4;
+        }
+        table {
+            margin: auto;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td:first-child {
+            background: #AFCDE7;
+            color: white;
+            padding: 10px 20px;
+        }
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+        td {
+            background: #D8E6F3;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class="main">
+    <div th:if="${#messages}">
+        <p th:text="${message}" style="color: red"></p>
+    </div>
+<form th:action="@{/admin/user-add}" method="post" th:object="${user}">
+
+    <input type="text" id="username" name="username" class="form-control"/>
+    <label class="form-label" for="username">Логин</label>
+    <div th:if="${#fields.hasErrors('username')}" style="color: red" th:errors="*{username}"></div>
+<br>
+    <input type="text" id="password" name="password" class="form-control"/>
+    <label class="form-label" for="password">Пароль</label>
+    <div th:if="${#fields.hasErrors('password')}" style="color: red" th:errors="*{password}"></div>
+
+    <div th:each="r : ${roles}">
+        <label>
+            <input th:id="${r}" type="checkbox" th:name="${'roles[]'}" th:value="${r}"/>
+        </label>
+        <label th:text="${r}"></label>
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Добавить"/>
+</form>
+</div>
+</body>
+</html>

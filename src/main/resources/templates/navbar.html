@@ -1,0 +1,16 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<body>
+<div th:fragment="navbar">
+    <nav class="one">
+        <ul>
+            <li> <a class="navMain" href="/admin/abonements-admin">Абонементы</a></li>
+            <li> <a class="navMain" href="/admin/hall-list">Залы</a></li>
+            <li><a class="navMain" href="/admin/user-list">Пользователи</a></li>
+        </ul>
+    </nav>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Выйти">
+                    </form>
+</div>
+</body>
+</html>

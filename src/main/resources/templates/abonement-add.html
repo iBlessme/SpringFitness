@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление</title>
+    <style>
+        a{
+            padding: 1em;
+            text-decoration: none;
+            color: #E6DDC4;
+        }
+        .super{
+            color: #2b41a5;
+            text-align: right;
+
+        }
+        body{
+            background-color: #678983;
+        }
+        .main{
+            width: 60%;
+            margin: auto;
+            padding: 50px;
+            background-color: #E6DDC4;
+        }
+        table {
+            margin: auto;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td:first-child {
+            background: #AFCDE7;
+            color: white;
+            padding: 10px 20px;
+        }
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+        td {
+            background: #D8E6F3;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="navbar :: navbar"></div>
+<div class="main">
+
+    <form th:action="@{/admin/abonement-add}" method="post" th:object="${abonement}">
+
+        <input type="text" id="nameAbon" name="nameAbon"/>
+        <label for="nameAbon">Наименование</label>
+        <br>
+        <br>
+        <input type="text" id="cost" name="cost"/>
+        <label for="cost">Стоимость</label>
+        <br>
+        <br>
+        <input type="text" id="count" name="count"/>
+        <label for="count">Посещений</label>
+        <br>
+        <br>
+        <input type="submit" value="Добавить"/>
+    </form>
+</div>
+</body>
+</html>

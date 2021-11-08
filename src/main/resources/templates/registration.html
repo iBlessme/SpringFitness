@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: #181D31;
+            display: block;
+            margin: 20px;
+        }
+        body{
+            background-color: #678983;
+        }
+        div{
+            width: 60%;
+            margin: auto;
+            padding: 50px;
+            background-color: #E6DDC4;
+        }
+        form{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+<form th:action="@{/registration}" method="post">
+    <input type="text" id="username" name="username">
+    <label for="username" style="margin-left: 0;">Логин</label>
+    <br>
+    <br>
+    <input type="password" id="password" name="password">
+    <label for="password" style="margin-left: 0;">Пароль</label>
+    <br>
+    <br>
+    <button type="submit">Создать аккаунт!</button>
+    <a href="/login">Авторизация</a>
+
+</form>
+</div>
+</body>
+</html>
